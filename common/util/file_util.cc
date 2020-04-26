@@ -75,7 +75,8 @@ std::string JoinPath(absl::string_view base, absl::string_view name) {
 
 bool CreateDir(absl::string_view dir) {
   const std::string path(dir);
-  int ret = mkdir(path.c_str(), 0755);
+  //int ret = mkdir(path.c_str(), 0755);
+  int ret = _mkdir(path.c_str());
   return ret == 0 || errno == EEXIST;
 }
 
@@ -84,7 +85,7 @@ ScopedTestFile::ScopedTestFile(absl::string_view base_dir,
                                absl::string_view content)
     // There is no secrecy needed for test files, just need to be unique enough.
     : filename_(JoinPath(
-          base_dir, absl::StrCat("scoped-file-", getpid(), "-", random()))) {
+          base_dir, absl::StrCat("scoped-file-", _getpid(), "-", random()))) {
   CHECK(SetContents(filename_, content));
 }
 

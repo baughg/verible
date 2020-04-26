@@ -273,7 +273,7 @@ class MacroCallArgExpander : public MutableTreeVisitorRecursive {
     if (token.token_enum == MacroArg) {
       VLOG(3) << "MacroCallArgExpander: examining token: " << token;
       // Attempt to parse text as an expression.
-      std::unique_ptr<VerilogAnalyzer> expr_analyzer =
+      std::shared_ptr<VerilogAnalyzer> expr_analyzer =
           AnalyzeVerilogExpression(token.text, "<macro-arg-expander>");
       if (!expr_analyzer->ParseStatus().ok()) {
         // If that failed, try to parse text as a property.

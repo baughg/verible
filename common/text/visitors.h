@@ -65,8 +65,8 @@ class SymbolVisitor {
 class MutableTreeVisitorRecursive {
  public:
   virtual ~MutableTreeVisitorRecursive() {}
-  virtual void Visit(const SyntaxTreeLeaf& leaf, std::unique_ptr<Symbol>*) = 0;
-  virtual void Visit(const SyntaxTreeNode& node, std::unique_ptr<Symbol>*) = 0;
+  virtual void Visit(const SyntaxTreeLeaf& leaf, std::shared_ptr<Symbol>*) = 0;
+  virtual void Visit(const SyntaxTreeNode& node, std::shared_ptr<Symbol>*) = 0;
 };
 
 }  // namespace verible

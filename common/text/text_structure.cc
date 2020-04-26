@@ -417,7 +417,7 @@ void TextStructureView::ConsumeDeferredExpansion(
 
   // Adjust locations of tokens in the expanded tree by pointing them
   // into the original text (contents_).
-  std::unique_ptr<TextStructure>& subanalysis = expansion->subanalysis;
+  std::shared_ptr<TextStructure>& subanalysis = expansion->subanalysis;
   TextStructureView& sub_data = ABSL_DIE_IF_NULL(subanalysis)->MutableData();
   const absl::string_view sub_data_text(sub_data.Contents());
   CHECK(!IsSubRange(sub_data_text, contents_));

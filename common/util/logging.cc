@@ -106,7 +106,7 @@ VmoduleMap* VmodulesMapFromEnv() {
   // The memory returned by getenv() can be invalidated by following getenv() or
   // setenv() calls. And since we keep references to it in the VmoduleMap in
   // form of StringData objects, make a copy of it.
-  const char* env_data = strdup(env);
+  const char* env_data = _strdup(env);
   VmoduleMap* result = new VmoduleMap();
   while (true) {
     const char* eq = strchr(env_data, '=');

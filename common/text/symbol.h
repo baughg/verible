@@ -29,7 +29,9 @@ namespace verible {
 
 class Symbol;
 
-using SymbolPtr = std::unique_ptr<Symbol>;
+//using SymbolPtr = std::unique_ptr<Symbol>;
+using SymbolPtr = std::shared_ptr<Symbol>;
+//using SymbolPtr = Symbol*;
 using TokenComparator =
     std::function<bool(const TokenInfo &, const TokenInfo &)>;
 
